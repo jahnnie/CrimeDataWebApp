@@ -10,7 +10,7 @@ var Router = (function () {
         });
         /* GET Hello World page. */
         router.get('/helloworld', function (req, res) {
-          res.render('helloworld', { title: 'Bello, banana!' });
+            res.render('helloworld', { title: 'Hello, World!' });
         });
         /* GET Userlist page. */
         router.get('/userlist', function (req, res) {

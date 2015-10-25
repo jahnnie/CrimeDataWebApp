@@ -25,6 +25,7 @@ class Application {
     //
 
     var routes = require('./routes/index');
+    var adminRoutes = require('./routes/admin');
 
     var app = express();
 
@@ -48,6 +49,7 @@ class Application {
     //
 
     app.use('/', routes);
+    app.use('/admin', adminRoutes);
 
     // catch 404 and forward to error handler
     app.use(function(req, res, next) {
