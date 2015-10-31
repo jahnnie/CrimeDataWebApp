@@ -23,12 +23,6 @@ At project root:
 $  tsd install
 ```
 
-#### Compile TypeScript into Javascript using tsc
-At project root:
-```shell
-$  tsc
-```
-
 #### run MongoDB
 ```shell
 $  mongod
@@ -38,3 +32,4 @@ $  mongod
 ```shell
 $  npm start
 ```
+`npm start` automatically compiles TypeScript so you don't have to execute `tsc`
