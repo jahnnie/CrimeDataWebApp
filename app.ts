@@ -16,6 +16,7 @@ class Application {
     var logger = require('morgan');
     var cookieParser = require('cookie-parser');
     var bodyParser = require('body-parser');
+    var mongoose = require('mongoose');
 
     var routes = require('./routes/index');
     var adminRoutes = require('./routes/admin');
@@ -33,6 +34,18 @@ class Application {
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(cookieParser());
     app.use(express.static(path.join(__dirname, 'public')));
+
+    var mongoPath = "mongodb://localhost/crimesDB";
+
+    var dbConnect = function () {
+      mongoose.connect(mongoPath);
+    };
+    dbConnect();
+    mongoose.connection.on('error', console.log);
+    mongoose.connection.on('connected', function () {
+      console.log('Connected to mongo');
+    });
+    
     app.use('/', routes);
     app.use('/admin', adminRoutes);
 
