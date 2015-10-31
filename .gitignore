@@ -29,5 +29,8 @@ node_modules
 # ignore compiled *.js files
 *.js
 
+# ignore DefinitelyTyped typings
+typings
+
 # ignore Mongo files
 data/*

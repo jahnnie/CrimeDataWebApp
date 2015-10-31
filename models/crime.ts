@@ -1,4 +1,4 @@
-/// <reference path="../types/DefinitelyTyped/mongoose/mongoose.d.ts" />
+/// <reference path='../typings/tsd.d.ts'/>
 
 import M = require('mongoose');
 
