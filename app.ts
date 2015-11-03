@@ -23,6 +23,29 @@ class Application {
 
     var app = express();
 
+    // OpenShift deployment settings
+    var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080;
+    var ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
+    var mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || "mongodb://localhost/crimesDB";
+    var mongoURLLabel = "";
+    if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
+      var mongoServiceName = process.env.DATABASE_SERVICE_NAME.toUpperCase();
+      var mongoHost = process.env[mongoServiceName + "_SERVICE_HOST"];
+      var mongoPort = process.env[mongoServiceName + "_SERVICE_PORT"];
+      var mongoUser = process.env.MONGODB_USER
+      if (mongoHost && mongoPort && process.env.MONGODB_DATABASE) {
+        mongoURLLabel = mongoURL = 'mongodb://';
+        if (process.env.MONGODB_USER && process.env.MONGODB_PASSWORD) {
+          mongoURL += process.env.MONGODB_USER + ':' + process.env.MONGODB_PASSWORD + '@';
+        }
+        // Provide UI label that excludes user id and pw
+
+        mongoURLLabel += mongoHost + ':' + mongoPort + '/' + process.env.MONGODB_DATABASE;
+        mongoURL += mongoHost + ':' + mongoPort + '/' + process.env.MONGODB_DATABASE;
+      }
+    }
+    // END OpenShift deployment settings
+
     // view engine setup
     app.set('views', path.join(__dirname, 'views'));
     app.set('view engine', 'jade');
@@ -35,17 +58,15 @@ class Application {
     app.use(cookieParser());
     app.use(express.static(path.join(__dirname, 'public')));
 
-    var mongoPath = "mongodb://localhost/crimesDB";
-
     var dbConnect = function () {
-      mongoose.connect(mongoPath);
+      mongoose.connect(mongoURL);
     };
     dbConnect();
     mongoose.connection.on('error', console.log);
     mongoose.connection.on('connected', function () {
       console.log('Connected to mongo');
     });
-    
+
     app.use('/', routes);
     app.use('/admin', adminRoutes);
 
@@ -80,6 +101,7 @@ class Application {
       });
     });
 
+    app.listen(port, ip);
 
     module.exports = app;
 
