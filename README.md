@@ -95,3 +95,10 @@ This will push (sync) the local git repo to OpenShift and start the build proces
 Wait till the build ends with `Deployment completed with status: success`
 
 Verify deployment at http://crimes-golds.rhcloud.com/
+
+You can view the MongoDB through:
+https://crimes-golds.rhcloud.com/rockmongo/
+```
+username: admin
+password: WIJCYsNHEZad
+```
