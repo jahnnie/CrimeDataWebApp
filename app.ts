@@ -21,6 +21,9 @@ class Application {
     var routes = require('./routes/index');
     var adminRoutes = require('./routes/admin');
 
+    // US#2
+    var adminCrimeDataRoutes = require('./routes/adminCrimeData');
+
     var app = express();
 
     // OpenShift deployment settings
@@ -69,6 +72,9 @@ class Application {
 
     app.use('/', routes);
     app.use('/admin', adminRoutes);
+
+    // US#2
+    app.use('/admincrimedata', adminCrimeDataRoutes);
 
     // catch 404 and forward to error handler
     app.use(function(req, res, next) {
