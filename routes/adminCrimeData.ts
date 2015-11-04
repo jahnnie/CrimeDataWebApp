@@ -12,9 +12,6 @@ class AdminCrimeDataRouter {
     /* GET Crime Data page. */
     router.get('/crimedata', function(req, res) {
       CrimeModel.find({},{},function(e,docs){
-      // var db = req.db;
-      // var collection = db.crimesDB.getCollection('crimes');
-      // collection.find({},{},function(e,docs){
         console.log(e);
         res.render('crimedata', {
            crimes : docs
