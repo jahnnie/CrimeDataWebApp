@@ -21,6 +21,8 @@ class Application {
     var routes = require('./routes/index');
     var adminRoutes = require('./routes/admin');
 
+    // US#4
+    var filterCrimeDataRoutes = require('./routes/filterCrimeData');
     // US#2
     var adminCrimeDataRoutes = require('./routes/adminCrimeData');
 
@@ -73,6 +75,8 @@ class Application {
     app.use('/', routes);
     app.use('/admin', adminRoutes);
 
+    // US#4
+    app.use('/filtercrimedata', filterCrimeDataRoutes);
     // US#2
     app.use('/admincrimedata', adminCrimeDataRoutes);
 
@@ -82,6 +86,7 @@ class Application {
       err.status = 404;
       next(err);
     });
+
 
     // error handlers
 

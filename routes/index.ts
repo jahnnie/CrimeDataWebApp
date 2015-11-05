@@ -17,6 +17,36 @@ class Router {
       res.render('helloworld', { title: 'Hello, World!' });
     });
 
+    /* GET Commercial Break and Enter page. */
+    router.post('/signup1', function(req, res) {
+      console.log(req.body);
+      res.redirect('/filterCrimeData/form1');
+    });
+
+    /* GET Mischief Under $5000 page. */
+    router.post('/signup2', function(req, res) {
+      console.log(req.body);
+      res.redirect('/filterCrimeData/form2');
+    });
+
+    /* GET Mischief Over $5000 page. */
+    router.post('/signup3', function(req, res) {
+      console.log(req.body);
+      res.redirect('/filterCrimeData/form3');
+    });        
+
+    /* GET Theft From Auto Under $5000 page. */
+    router.post('/signup4', function(req, res) {
+      console.log(req.body);
+      res.redirect('/filterCrimeData/form4');
+    });    
+
+    /* GET Theft From Auto Over $5000 page. */
+    router.post('/signup5', function(req, res) {
+      console.log(req.body);
+      res.redirect('/filterCrimeData/form5');
+    });    
+
     /* GET Userlist page. */
     router.get('/userlist', function(req, res) {
       var db = req.db;
@@ -34,6 +64,7 @@ class Router {
       res.render('newuser', { title: 'Add New User' });
     });
 
+    
     /* POST to Add User Service */
     router.post('/adduser', function(req, res) {
 

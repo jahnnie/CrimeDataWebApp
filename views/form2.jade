@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1
+        List List of Crimes
+
+    ul      
+        each crime in crimes
+            li
+            
+                p Type: #{crime.type = 'Mischief Under $5000'}
+                p Year: #{crime.year} 
+                p Month: #{crime.month}
+                p Year: #{crime.address} 
