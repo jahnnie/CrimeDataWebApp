@@ -1,100 +1,55 @@
 /// <reference path='../typings/tsd.d.ts'/>
 
-class Router {
+class AdminCrimeDataRouter {
 
   constructor() {
 
     var express = require('express');
     var router = express.Router();
 
-    /* GET home page. */
-    router.get('/', function(req, res, next) {
-      res.render('index', { title: 'Express' });
-    });
+    var CrimeModel = require('./../models/crime').crimeModel
 
-    /* GET Hello World page. */
-    router.get('/helloworld', function(req, res) {
-      res.render('helloworld', { title: 'Hello, World!' });
-    });
-
-    /* GET Userlist page. */
-    router.get('/userlist', function(req, res) {
-      var db = req.db;
-      var collection = db.get('usercollection');
-      collection.find({},{},function(e,docs){
+    /* GET Crime Data page. */
+    router.get('/crimedata', function(req, res) {
+      CrimeModel.find({},{},function(e,docs){
         console.log(e);
-        res.render('userlist', {
-          "userlist" : docs
+        res.render('crimedata', {
+           crimes : docs
         });
-      });
+        });
+    });
+    /* GET Gmaps. */
+    router.get('/gmaps', function(req, res) {
+        CrimeModel.find({},{},function(e,docs){
+            console.log(e);
+            var arr = [];
+            for(var i=0;i<10;i++){
+                arr[i] = docs[i].address;
+            }
+            res.render('gmaps',{
+                title: 'mapcrimes',
+                adds: JSON.stringify(arr)
+            });
+        })
     });
 
-    /* GET New User page. */
-    router.get('/newuser', function(req, res) {
-      res.render('newuser', { title: 'Add New User' });
-    });
-
-    /* POST to Add User Service */
-    router.post('/adduser', function(req, res) {
-
-      // Set our internal DB variable
-      var db = req.db;
-
-      // Get our form values. These rely on the "name" attributes
-      var userName = req.body.username;
-      var userEmail = req.body.useremail;
-
-      //inserted new code
-      var user = new User(userName, userEmail);
-
-      // Set our collection
-      var collection = db.get('usercollection');
-
-      // Submit to the DB (edited)
-      collection.insert({
-        "username" : user.getName(),
-        "email" : user.getEmail()
-      }, function (err, doc) {
-        if (err) {
-          // If it failed, return error
-          res.send("There was a problem adding the information to the database.");
+    router.get('/newpage', function(req, res) {
+      CrimeModel.find({},{},function(e,docs){
+        console.log(e);
+        var arr1 = [];
+        for(var i=0;i<10;i++){
+            arr1[i] = docs[i];
         }
-        else {
-          // And forward to success page
-          res.redirect("userlist");
-        }
-      });
+        res.render('newpage', {
+           title: 'tableCrimes',
+           crimes: JSON.stringify(arr1)
+        });
+        });
     });
 
-
+    router.get
     module.exports = router;
-
   }
 }
 
-var route = new Router();
-
-interface UserInterface {
-  getName();
-  getEmail();
-
-}
-
-class User implements UserInterface {
-  private name : string;
-  private email : string;
-
-  constructor(name : string, email : string) {
-    this.name = name;
-    this.email = email;
-  }
-
-  getName() {
-    return this.name;
-  }
-
-  getEmail() {
-    return this.email;
-  }
-
-}
+var adminCrimeDataRouter = new AdminCrimeDataRouter();

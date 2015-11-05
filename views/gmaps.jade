@@ -1,0 +1,51 @@
+doctype html
+html
+  head
+    meta(name='viewport', content='initial-scale=1.0, user-scalable=no')
+    meta(charset='utf-8')
+    title Simple markers
+    style.
+      html, body {
+      height: 100%;
+      margin: 10000;
+      padding: 10000000;
+      }
+      #map {
+      height: 100%;
+      }
+  body
+    #map
+    script.
+      var geocoder;
+      var latLng = {lat: 49.2827, lng: -123.1207};
+      var addresses = JSON.parse('!{adds}');
+
+      function initMap() {
+      geocoder = new google.maps.Geocoder();
+      var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 12,
+      center: latLng
+      });
+      for(var i=0;i<10;i++){
+      var address = addresses[i] + " Vancouver, BC";
+      geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+            map: map,
+            title: address,
+            position: results[0].geometry.location
+        });
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
+      }
+      });}
+      }
+
+    script(async='', defer='', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDf66Jl1qUIpgwbjOfOJ1aQoW22z3LqJIA&signed_in=true&callback=initMap')
+    button(onclick="move()") crimeData
+    script.
+        function move(){
+            window.location.href = '/crimedata'
+        }
+
