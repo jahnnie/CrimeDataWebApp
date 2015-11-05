@@ -1,4 +1,10 @@
 h1 Table View
 script.
 	var crimes = JSON.parse('!{crimes}');
-	document.write(JSON.stringify(crimes));
+	for(var i=0;i<10;i++){
+	document.write("TYPE: ".bold() + JSON.stringify(crimes[i].type) + "<br>");
+	document.write("YEAR: ".bold() + JSON.stringify(crimes[i].year) + "<br>");
+	document.write("MONTH: ".bold() + JSON.stringify(crimes[i].month) + "<br>");
+	document.write("ADDRESS: ".bold() + JSON.stringify(crimes[i].address) + "<br>");
+	document.write("<br>");
+	}
