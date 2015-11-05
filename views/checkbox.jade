@@ -1,0 +1,54 @@
+extends layout
+
+block content
+  h1= title
+
+  form(action='/signup1',method='post')
+    input(type="checkbox", name="chk1")
+    = " Commercial Break and Enter"
+    br
+    input(type='submit', value= 'Save Settings')
+  br  
+
+  form(action='/signup2',method='post')
+    input(type="checkbox", name="chk1")
+    = " Mischief Under $5000"
+    br
+    input(type='submit', value= 'Save Settings')
+  br
+
+  form(action='/signup3',method='post')
+    input(type="checkbox", name="chk1")
+    = " Mischief Over $5000"
+    br
+    input(type='submit', value= 'Save Settings')
+  br
+
+  form(action='/signup4',method='post')
+    input(type="checkbox", name="chk1")
+    = " Theft From Auto Under $5000"
+    br
+    input(type='submit', value= 'Save Settings') 
+  br
+
+  form(action='/signup5',method='post')
+    input(type="checkbox", name="chk1")
+    = " Theft From Auto Over $5000"
+    br
+    input(type='submit', value= 'Save Settings')
+br
+    //- input(type="checkbox", name="chk2")
+    //- = " Mischief Under $5000"
+    //- br
+    //- input(type="checkbox", name="chk3")
+    //- = " Mischief Over $5000"
+    //- br
+    //- input(type="checkbox", name="chk4")
+    //- = " Theft From Auto Under $5000"
+    //- br
+    //- input(type="checkbox", name="chk5")
+    //- = " Theft From Auto Over $5000"
+    //- br
+    //- br
+    //- input(type='submit', value= 'Save Settings')
+  
