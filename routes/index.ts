@@ -66,6 +66,45 @@ class Router {
            crimes: JSON.stringify(arr1)
         });
     })});
+
+        router.get('/crimedata', function(req, res) {
+      CrimeModel.find({},{},function(e,docs){
+        console.log(e);
+        res.render('crimedata', {
+           crimes : docs
+        });
+        });
+    });
+
+    /* GET New Crime Page. */
+    router.get('/addnewcrimepage', function(req, res) {
+      res.render('addnewcrimepage', { title: 'New Crime' });
+    });  
+    
+    /* POST to Add New Crime. */
+    router.post('/addcrime', function(req, res) {
+      var newCrime = {
+        "type": req.body.type,
+        "year": req.body.year,
+        "month": req.body.month,
+        "address": req.body.address
+      };
+      CrimeModel.collection.insert(newCrime, function(err, doc) {
+        if (err) {
+          res.send("There was a problem adding the new crime.");
+        }
+        else {
+          res.redirect('/admincrimedata/crimedata');
+        }
+      });
+    });
+
+    /* Delete a crime. */
+    router.post('/delete', function(req, res) {
+      CrimeModel.delete(req.param('_id'), function(error, docs) {
+        res.redirect('/admincrimedata/crimedata')
+      });
+    });
     module.exports = router;
   }
 }
