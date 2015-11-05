@@ -1,0 +1,10 @@
+extends layout
+
+block content
+	h1= title
+	form#formAddCrime(name="addcrime",method="post",action="/admincrimedata/addcrime")
+		input#inputType(type="text", placeholder="type", name="type")
+		input#inputYear(type="text", placeholder="year", name="year")
+		input#inputMonth(type="text", placeholder="month", name="month")
+		input#inputAddress(type="text", placeholder="address", name="address")
+		button#btnSubmit(type="submit") submit

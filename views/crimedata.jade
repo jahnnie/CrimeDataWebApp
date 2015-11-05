@@ -6,6 +6,7 @@ body
 
     #recipes
       div
+        a(href="/admincrimedata/addnewcrimepage")= "Add New Crime"
         table 
           thead
             tr
@@ -20,5 +21,9 @@ body
                 td= crime.year
                 td= crime.month
                 td= crime.address
+                  div
+                    form(method="post", action="/admincrimedata/delete")
+                    input(name="_id", type="hidden", value=crime._id.toHexString())
+                    input(id="edit", value="x", type="submit" style="float: right")
 
 
