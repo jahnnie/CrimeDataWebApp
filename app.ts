@@ -21,6 +21,9 @@ class Application {
     var routes = require('./routes/index');
     var adminRoutes = require('./routes/admin');
 
+    var filterCrimeDataRoutes = require('./routes/filterCrimeData');
+    var adminCrimeDataRoutes = require('./routes/adminCrimeData');
+
     var app = express();
 
     // view engine setup
@@ -49,12 +52,16 @@ class Application {
     app.use('/', routes);
     app.use('/admin', adminRoutes);
 
+    app.use('/filtercrimedata', filterCrimeDataRoutes);
+    app.use('/admincrimedata', adminCrimeDataRoutes);
+
     // catch 404 and forward to error handler
     app.use(function(req, res, next) {
       var err = new Error('Not Found');
       err.status = 404;
       next(err);
     });
+
 
     // error handlers
 
