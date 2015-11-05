@@ -5,6 +5,7 @@
   "scripts": {
     "start": "tsc && node ./bin/www"
   },
+  "main": "app.js",
   "dependencies": {
     "body-parser": "~1.12.4",
     "bson": "^0.4.19",
@@ -16,6 +17,8 @@
     "mongoose": "^3.8.36",
     "morgan": "~1.5.3",
     "promise": "^7.0.4",
-    "serve-favicon": "~2.2.1"
+    "serve-favicon": "~2.2.1",
+    "tsc": "^1.20150623.0",
+    "tsd": "^0.6.5"
   }
 }

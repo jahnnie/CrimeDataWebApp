@@ -1,6 +1,6 @@
 /// <reference path='../typings/tsd.d.ts'/>
 
-class AdminCrimeDataRouter {
+class Router {
 
   constructor() {
 
@@ -9,15 +9,36 @@ class AdminCrimeDataRouter {
 
     var CrimeModel = require('./../models/crime').crimeModel
 
-    /* GET Crime Data page. */
-    router.get('/crimedata', function(req, res) {
-      CrimeModel.find({},{},function(e,docs){
-        console.log(e);
-        res.render('crimedata', {
-           crimes : docs
-        });
-        });
+    /* GET Commercial Break and Enter page. */
+    router.post('/signup1', function(req, res) {
+      console.log(req.body);
+      res.redirect('/filterCrimeData/form1');
     });
+
+    /* GET Mischief Under $5000 page. */
+    router.post('/signup2', function(req, res) {
+      console.log(req.body);
+      res.redirect('/filterCrimeData/form2');
+    });
+
+    /* GET Mischief Over $5000 page. */
+    router.post('/signup3', function(req, res) {
+      console.log(req.body);
+      res.redirect('/filterCrimeData/form3');
+    });        
+
+    /* GET Theft From Auto Under $5000 page. */
+    router.post('/signup4', function(req, res) {
+      console.log(req.body);
+      res.redirect('/filterCrimeData/form4');
+    });    
+
+    /* GET Theft From Auto Over $5000 page. */
+    router.post('/signup5', function(req, res) {
+      console.log(req.body);
+      res.redirect('/filterCrimeData/form5');
+    });    
+
     /* GET Gmaps. */
     router.get('/gmaps', function(req, res) {
         CrimeModel.find({},{},function(e,docs){
@@ -44,12 +65,9 @@ class AdminCrimeDataRouter {
            title: 'tableCrimes',
            crimes: JSON.stringify(arr1)
         });
-        });
-    });
-
-    router.get
+    })});
     module.exports = router;
   }
 }
 
-var adminCrimeDataRouter = new AdminCrimeDataRouter();
+var adminCrimeDataRouter = new Router();

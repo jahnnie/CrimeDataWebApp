@@ -1,0 +1,24 @@
+extends layout
+head
+body
+  block content
+    h1 Crime Data
+
+    #recipes
+      div
+        table 
+          thead
+            tr
+              td Type
+              td Year
+              td Month
+              td Address
+            tr 
+            - each crime in crimes
+              tr
+                td= crime.type
+                td= crime.year
+                td= crime.month
+                td= crime.address
+
+

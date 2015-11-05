@@ -6,7 +6,7 @@ var Promise = require('promise');
 
 var CrimeModel = require('./../models/crime').crimeModel
 
-export function loadData() {
+export function loadData(callback) {
 
   var file = fs.readFileSync('assets/crime_2015.csv', 'utf8');
 
@@ -14,10 +14,12 @@ export function loadData() {
   .then(function (results) {
     return formatResults(results);
   })
-  .then(function (results) {
-    insertCrimes(results)
+  .then(function (data) {
+    return insertCrimes(data);
+  })
+  .then(function (inserted) {
+    callback(inserted.length);
   });
-
 }
 
 // Promise wrapper for parsing CSV
@@ -51,7 +53,10 @@ var insertCrimes = function (crimes) {
   return new Promise(function (fulfill, reject) {
     CrimeModel.collection.insert(crimes, function (err, docs) {
       if (err) reject(err);
-      else console.log('inserted %d crimes', docs.length)
+      else {
+        console.log('inserted %d crimes', docs.length);
+        fulfill(docs);
+      }
     });
   })
 }

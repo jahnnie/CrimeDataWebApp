@@ -1,0 +1,10 @@
+#!/bin/bash
+OLD_HOME=$HOME
+export HOME=$OPENSHIFT_REPO_DIR
+if [ -f "${OPENSHIFT_REPO_DIR}"/tsd.json ]; then
+ (cd "${OPENSHIFT_REPO_DIR}"; node_modules/.bin/tsd install)
+fi
+if [ -f "${OPENSHIFT_REPO_DIR}"/tsconfig.json ]; then
+ (cd "${OPENSHIFT_REPO_DIR}"; node_modules/.bin/tsc)
+fi
+export HOME=$OLD_HOME
