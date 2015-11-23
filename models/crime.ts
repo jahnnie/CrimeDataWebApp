@@ -18,3 +18,7 @@ export interface ICrime extends M.Document {
 }
 
 export var crimeModel = M.model<ICrime>("crime", crimeSchema);
+
+export function removeAll() {
+  return crimeModel.remove({}).exec();
+}
