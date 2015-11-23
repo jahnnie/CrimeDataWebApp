@@ -4,7 +4,7 @@ body
   block content
     h1 Crime Data
 
-    #recipes
+    #crimes
       div
         a(href="/admincrimedata/addnewcrimepage")= "Add New Crime"
         table 
@@ -23,7 +23,7 @@ body
                 td= crime.address
                   div
                     form(method="post", action="/admincrimedata/delete")
-                    input(name="_id", type="hidden", value=crime._id.toHexString())
-                    input(id="edit", value="x", type="submit" style="float: right")
+                      input(name="_id", type="hidden", value=crime._id.toHexString())
+                      input(id="edit", value="x", type="submit" style="float: right")
 
 
