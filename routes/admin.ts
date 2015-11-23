@@ -2,6 +2,7 @@
 
 import express = require('express');
 import loadData = require('../controllers/loadData');
+import users = require('../controllers/user');
 
 class AdminRouter {
   router: express.Router;
@@ -17,6 +18,15 @@ class AdminRouter {
         });
       });
     });
+    this.router.get('/userlist', function(req, res) {
+      users.allUsers()
+      .then(function (users) {
+        res.render('userlist', {
+          title: "List of all users",
+          userlist: users
+        });
+      });
+    })
   }
 }
 
