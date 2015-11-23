@@ -44,8 +44,13 @@ class AdminCrimeDataRouter {
 
     /* Delete a crime. */
     router.post('/delete', function(req, res) {
-      CrimeModel.delete(req.param('_id'), function(error, docs) {
-        res.redirect('/admincrimedata/crimedata')
+      CrimeModel.remove({ _id: req.param('_id') }, function(err, doc) {
+        if (err) {
+          res.send("There was a problem deleting the crime.");
+        }
+        else {
+          res.redirect('/admincrimedata/crimedata');
+        }
       });
     });
 
