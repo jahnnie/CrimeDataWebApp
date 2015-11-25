@@ -44,6 +44,12 @@ $  npm start
 ```
 > `npm start` automatically compiles TypeScript so you don't have to execute `tsc`
 
+##### To run the Mocha test suite:
+```shell
+$  npm test
+```
+> `npm test` compiles TypeScript files before running `mocha` commands
+
 ## Deploy to OpenShift hosting
 
 ### First time configs
