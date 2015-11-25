@@ -1,6 +1,7 @@
 /// <reference path='../typings/tsd.d.ts'/>
 
 import M = require('mongoose');
+var Promise = require('promise');
 
 export var crimeSchema:M.Schema = new M.Schema(
   {
@@ -20,5 +21,11 @@ export interface ICrime extends M.Document {
 export var crimeModel = M.model<ICrime>("crime", crimeSchema);
 
 export function removeAll() {
-  return crimeModel.remove({}).exec();
+  return new Promise(function (resolve, reject) {
+    crimeModel.remove({}, function (error) {
+      if (error)
+        return reject(error);
+      else resolve();
+    })
+  });
 }

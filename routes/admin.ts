@@ -10,11 +10,11 @@ class AdminRouter {
   constructor() {
     this.router = express.Router();
     this.router.get('/load', function(req, res, next) {
-      loadData.loadData(function (inserted) {
+      return loadData.loadData()
+      .then(function (inserted) {
         //res.send({ success: true, inserted: inserted });
         res.render('loadedData', {
           title: inserted + " crimes inserted"
-
         });
       });
     });

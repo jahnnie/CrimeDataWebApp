@@ -7,10 +7,9 @@ var Promise = require('promise');
 var Crime = require('./../models/crime');
 var CrimeModel = Crime.crimeModel;
 
-export function loadData(callback) {
-
+export function loadData() {
   var file = fs.readFileSync('assets/crime_2015.csv', 'utf8');
-  Crime.removeAll()
+  return Crime.removeAll()
   .then(function () {
     return parsePromise(file, { columns: true })
   })
@@ -21,7 +20,7 @@ export function loadData(callback) {
     return insertCrimes(data);
   })
   .then(function (inserted) {
-    callback(inserted.length);
+    return inserted.length;
   });
 }
 
@@ -58,7 +57,6 @@ var insertCrimes = function (crimes) {
     CrimeModel.collection.insert(crimes, function (err, docs) {
       if (err) reject(err);
       else {
-        console.log('inserted %d crimes', docs.length);
         fulfill(docs);
       }
     });
