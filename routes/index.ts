@@ -1,4 +1,5 @@
 /// <reference path='../typings/tsd.d.ts'/>
+import userData = require('../controllers/user');
 
 class Router {
 
@@ -22,11 +23,6 @@ class Router {
                 adds: JSON.stringify(arr)
             });
         })
-    });
-
-    /* GET home page. */
-    router.get('/', function(req, res, next) {
-      res.render('index', { title: 'Express' });
     });
 
     /* GET Hello World page. */
