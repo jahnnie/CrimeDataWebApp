@@ -26,7 +26,7 @@ export function loadData() {
 
 
 // Promise wrapper for parsing CSV
-var parsePromise = function (file, options) {
+export function parsePromise(file, options) {
   return new Promise(function (fulfill, reject) {
     parse(file, options, function (err, output) {
       if (err) reject(err);
