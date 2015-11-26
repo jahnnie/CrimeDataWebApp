@@ -18,6 +18,7 @@ html
       height: 100%;
       }
   body
+    #container
      input(id = "chk1",type="checkbox", name="chk1", onclick='comm();')
     = " Commercial Break and Enter"
 
@@ -160,6 +161,12 @@ html
         position: results[0].geometry.location,
         title: myTitle,
         zIndex: i
+        });
+        var infoWindow0 = new google.maps.InfoWindow({
+        content: myTitle + '<button onclick="twitterButton()">Click me</button>'
+        });
+        marker.addListener('click', function() {
+        infoWindow0.open(map,marker);
         });
         }
         else{
@@ -345,3 +352,7 @@ html
             window.location.href = '/dAll'
             }
         }
+
+    script.
+      function twitterButton(){
+      document.write("nigas");}
