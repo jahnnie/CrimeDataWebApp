@@ -2,7 +2,7 @@ extends layout
 
 block content
   h1= title
-  form#formAddUser(name="adduser",method="post",action="signedUpPage")
+  form#formAddUser(name="adduser",method="post",action="/user/signedUpPage")
     input#inputUserName(type="text", placeholder="username", name="username")
     input#inputPassword(type="password", placeholder="password", name="password")
     input#inputFirstName(type="text", placeholder="first name", name="firstName")

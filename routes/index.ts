@@ -143,10 +143,6 @@ class Router {
 
     });
 
-    /* GET New User page. */
-    router.get('/newuser', function(req, res) {
-      res.render('newuser', { title: 'Add New User' });
-    });
 
     /* GET New Crime Page. */
     router.get('/addnewcrimepage', function(req, res) {
