@@ -24,7 +24,13 @@ block content
                   }
               }
               document.write("invalid login information");
+              var a = document.createElement('a');
+              var linkText = document.createTextNode("go back");
+              a.appendChild(linkText);
+              a.title = "go back";
+              a.href = "../user";
+              document.body.appendChild(a);
                 }
           function register(){
                  window.location = "/user/newuser";
-                }
+                   }
