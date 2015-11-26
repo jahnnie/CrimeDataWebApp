@@ -1,0 +1,38 @@
+h1 Table View
+script.
+	var crimes = JSON.parse('!{dAll}');
+	for(var i=0;i<2;i++){
+	document.write("TYPE: ".bold().fontcolor("purple") + JSON.stringify(crimes[i].type).fontcolor("purple") + "<br>".fontcolor("purple"));
+	document.write("YEAR: ".bold().fontcolor("purple") + JSON.stringify(crimes[i].year).fontcolor("purple") + "<br>".fontcolor("purple"));
+	document.write("MONTH: ".bold().fontcolor("purple") + JSON.stringify(crimes[i].month).fontcolor("purple") + "<br>".fontcolor("purple"));
+	document.write("ADDRESS: ".bold().fontcolor("purple") + JSON.stringify(crimes[i].address).fontcolor("purple") + "<br>".fontcolor("purple"));
+	document.write("<br>");
+	}
+	for(var i=2;i<4;i++){
+	document.write("TYPE: ".bold().fontcolor("green") + JSON.stringify(crimes[i].type).fontcolor("green") + "<br>".fontcolor("green"));
+	document.write("YEAR: ".bold().fontcolor("green") + JSON.stringify(crimes[i].year).fontcolor("green") + "<br>".fontcolor("green"));
+	document.write("MONTH: ".bold().fontcolor("green") + JSON.stringify(crimes[i].month).fontcolor("green") + "<br>".fontcolor("green"));
+	document.write("ADDRESS: ".bold().fontcolor("green") + JSON.stringify(crimes[i].address).fontcolor("green") + "<br>".fontcolor("green"));
+	document.write("<br>");
+	}
+	for(var i=4;i<6;i++){
+	document.write("TYPE: ".bold().fontcolor("blue") + JSON.stringify(crimes[i].type).fontcolor("blue") + "<br>".fontcolor("blue"));
+	document.write("YEAR: ".bold().fontcolor("blue") + JSON.stringify(crimes[i].year).fontcolor("blue") + "<br>".fontcolor("blue"));
+	document.write("MONTH: ".bold().fontcolor("blue") + JSON.stringify(crimes[i].month).fontcolor("blue") + "<br>".fontcolor("blue"));
+	document.write("ADDRESS: ".bold().fontcolor("blue") + JSON.stringify(crimes[i].address).fontcolor("blue") + "<br>".fontcolor("blue"));
+	document.write("<br>");
+	}
+	for(var i=6;i<8;i++){
+	document.write("TYPE: ".bold().fontcolor("orange") + JSON.stringify(crimes[i].type).fontcolor("orange") + "<br>".fontcolor("orange"));
+	document.write("YEAR: ".bold().fontcolor("orange") + JSON.stringify(crimes[i].year).fontcolor("orange") + "<br>".fontcolor("orange"));
+	document.write("MONTH: ".bold().fontcolor("orange") + JSON.stringify(crimes[i].month).fontcolor("orange") + "<br>".fontcolor("orange"));
+	document.write("ADDRESS: ".bold().fontcolor("orange") + JSON.stringify(crimes[i].address).fontcolor("orange") + "<br>".fontcolor("orange"));
+	document.write("<br>");
+	}
+	for(var i=8;i<10;i++){
+	document.write("TYPE: ".bold().fontcolor("red") + JSON.stringify(crimes[i].type).fontcolor("red") + "<br>".fontcolor("red"));
+	document.write("YEAR: ".bold().fontcolor("red") + JSON.stringify(crimes[i].year).fontcolor("red") + "<br>".fontcolor("red"));
+	document.write("MONTH: ".bold().fontcolor("red") + JSON.stringify(crimes[i].month).fontcolor("red") + "<br>".fontcolor("red"));
+	document.write("ADDRESS: ".bold().fontcolor("red") + JSON.stringify(crimes[i].address).fontcolor("red") + "<br>".fontcolor("red"));
+	document.write("<br>");
+	}

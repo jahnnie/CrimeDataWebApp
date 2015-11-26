@@ -1,12 +1,16 @@
 doctype html
 html
   head
+    a.twitter-share-button(href='https://twitter.com/share', {count}='', data-url='http://crimes-golds.rhcloud.com/gmaps', data-text="Check out Goldman Sachs' App!", data-size='large', data-hashtags='yeee310project') Tweet
+    script.
+      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
     meta(name='viewport', content='initial-scale=1.0, user-scalable=no')
     meta(charset='utf-8')
     title Simple markers
     style.
       html, body {
-      height: 100%;
+      height: 70%;
+      width: 70%;
       margin: 10000;
       padding: 10000000;
       }
@@ -14,38 +18,330 @@ html
       height: 100%;
       }
   body
+     input(id = "chk1",type="checkbox", name="chk1", onclick='comm();')
+    = " Commercial Break and Enter"
+
+    input(id = "chk2", type="checkbox", name="chk2", onclick='misUnder();')
+    = " Mischief Under $5000"
+
+    input(id = "chk3", type="checkbox", name="chk3", onclick='misOver();')
+    = " Mischief Over $5000"
+
+    input(id = "chk4", type="checkbox", name="chk4", onclick='taUnder();')
+    = " Theft From Auto Under $5000"
+
+    input(id = "chk5", type="checkbox", name="chk5", onclick='taOver();')
+    = " Theft From Auto Over $5000"
+
+    input(id = "dAll", type='submit', value= 'Display All', onclick='initMap();')
+
     #map
     script.
-      var geocoder;
       var latLng = {lat: 49.2827, lng: -123.1207};
-      var addresses = JSON.parse('!{adds}');
+      var commArray = JSON.parse('!{comms}');
+      var mu5Array = JSON.parse('!{mu5s}');
+      var mo5Array = JSON.parse('!{mo5s}');
+      var taU5Array = JSON.parse('!{tau5s}');
+      var taO5Array = JSON.parse('!{tao5s}');
+      var allArray = JSON.parse('!{errthang}');
 
-      function initMap() {
-      geocoder = new google.maps.Geocoder();
+
+      function misUnder(){
+      var geocoder = new google.maps.Geocoder();
       var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 12,
       center: latLng
       });
-      for(var i=0;i<10;i++){
-      var address = addresses[i] + " Vancouver, BC";
-      geocoder.geocode( { 'address': address}, function(results, status) {
-      if (status == google.maps.GeocoderStatus.OK) {
-        map.setCenter(results[0].geometry.location);
+      for(var i = 0; i < 10; i++){
+        var addy = mu5Array[i].address + " Vancouver, BC";
+        var geoOptions = {
+        address: addy
+        }
+        geocoder.geocode( geoOptions ,addMarkers(mu5Array[i].address));
+      }
+      function addMarkers(myTitle){
+        return function(results,status){
+        if(status == google.maps.GeocoderStatus.OK){
         var marker = new google.maps.Marker({
-            map: map,
-            title: address,
-            position: results[0].geometry.location
+        map: map,
+        position: results[0].geometry.location,
+        title: myTitle,
+        icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+        zIndex: i
         });
-      } else {
-        alert("Geocode was not successful for the following reason: " + status);
+        }
+        else{
+        alert(status);
+        }
+        };
+        }
       }
-      });}
+
+      function misOver(){
+      var geocoder = new google.maps.Geocoder();
+      var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 12,
+      center: latLng
+      });
+      for(var i = 0; i < 10; i++){
+        var addy = mo5Array[i].address + " Vancouver, BC";
+        var geoOptions = {
+        address: addy
+        }
+        geocoder.geocode( geoOptions ,addMarkers(mo5Array[i].address));
       }
+      function addMarkers(myTitle){
+        return function(results,status){
+        if(status == google.maps.GeocoderStatus.OK){
+        var marker = new google.maps.Marker({
+        map: map,
+        position: results[0].geometry.location,
+        title: myTitle,
+        icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+        zIndex: i
+        });
+        }
+        else{
+        alert(status);
+        }
+        };
+        }
+      }
+
+      function taUnder(){
+      var geocoder = new google.maps.Geocoder();
+      var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 12,
+      center: latLng
+      });
+      for(var i = 0; i < 10; i++){
+        var addy = taU5Array[i].address + " Vancouver, BC";
+        var geoOptions = {
+        address: addy
+        }
+        geocoder.geocode( geoOptions ,addMarkers(taU5Array[i].address));
+      }
+      function addMarkers(myTitle){
+        return function(results,status){
+        if(status == google.maps.GeocoderStatus.OK){
+        var marker = new google.maps.Marker({
+        map: map,
+        position: results[0].geometry.location,
+        title: myTitle,
+        icon: 'http://maps.google.com/mapfiles/ms/icons/orange-dot.png',
+        zIndex: i
+        });
+        }
+        else{
+        alert(status);
+        }
+        };
+        }
+      }
+
+      function taOver(){
+      var geocoder = new google.maps.Geocoder();
+      var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 12,
+      center: latLng
+      });
+      for(var i = 0; i < 10; i++){
+        var addy = taO5Array[i].address + " Vancouver, BC";
+        var geoOptions = {
+        address: addy
+        }
+        geocoder.geocode( geoOptions ,addMarkers(taO5Array[i].address));
+      }
+      function addMarkers(myTitle){
+        return function(results,status){
+        if(status == google.maps.GeocoderStatus.OK){
+        var marker = new google.maps.Marker({
+        map: map,
+        position: results[0].geometry.location,
+        title: myTitle,
+        zIndex: i
+        });
+        }
+        else{
+        alert(status);
+        }
+        };
+        }
+      }
+
+      function comm(){
+      var geocoder = new google.maps.Geocoder();
+      var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 12,
+      center: latLng
+      });
+      for(var i = 0; i < 10; i++){
+        var addy = commArray[i].address + " Vancouver, BC";
+        var geoOptions = {
+        address: addy
+        }
+        geocoder.geocode( geoOptions ,addMarkers(commArray[i].address));
+      }
+      function addMarkers(myTitle){
+        return function(results,status){
+        if(status == google.maps.GeocoderStatus.OK){
+        var marker = new google.maps.Marker({
+        map: map,
+        position: results[0].geometry.location,
+        title: myTitle,
+        icon: 'http://maps.google.com/mapfiles/ms/icons/pink-dot.png',
+        zIndex: i
+        });
+        }
+        else{
+        alert(status);
+        }
+        };
+        }
+      }
+      function initMap() {
+      var geocoder = new google.maps.Geocoder();
+      var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 12,
+      center: latLng
+      });
+      for(var i = 0; i < 2; i++){
+        var addy = allArray[i].address + " Vancouver, BC";
+        var geoOptions = {
+        address: addy
+        }
+        geocoder.geocode( geoOptions ,addMarkers(allArray[i].address));
+      }
+      for(var i = 2; i < 4; i++){
+        var addy = allArray[i].address + " Vancouver, BC";
+        var geoOptions = {
+        address: addy
+        }
+        geocoder.geocode( geoOptions ,addMarkers2(allArray[i].address));
+      }
+      for(var i = 4; i < 6; i++){
+        var addy = allArray[i].address + " Vancouver, BC";
+        var geoOptions = {
+        address: addy
+        }
+        geocoder.geocode( geoOptions ,addMarkers3(allArray[i].address));
+      }
+      for(var i = 6; i < 8; i++){
+        var addy = allArray[i].address + " Vancouver, BC";
+        var geoOptions = {
+        address: addy
+        }
+        geocoder.geocode( geoOptions ,addMarkers4(allArray[i].address));
+      }
+      for(var i = 8; i < 10; i++){
+        var addy = allArray[i].address + " Vancouver, BC";
+        var geoOptions = {
+        address: addy
+        }
+        geocoder.geocode( geoOptions ,addMarkers5(allArray[i].address));
+      }
+      function addMarkers(myTitle){
+        return function(results,status){
+        if(status == google.maps.GeocoderStatus.OK){
+        var marker = new google.maps.Marker({
+        map: map,
+        position: results[0].geometry.location,
+        title: myTitle,
+        zIndex: i,
+        icon: 'http://maps.google.com/mapfiles/ms/icons/pink-dot.png'
+        });
+        }
+        else{
+        alert(status);
+        }
+        };
+        }
+        function addMarkers2(myTitle){
+        return function(results,status){
+        if(status == google.maps.GeocoderStatus.OK){
+        var marker = new google.maps.Marker({
+        map: map,
+        position: results[0].geometry.location,
+        title: myTitle,
+        zIndex: i,
+        icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+        });
+        }
+        else{
+        alert(status);
+        }
+        };
+        }
+        function addMarkers3(myTitle){
+        return function(results,status){
+        if(status == google.maps.GeocoderStatus.OK){
+        var marker = new google.maps.Marker({
+        map: map,
+        position: results[0].geometry.location,
+        title: myTitle,
+        zIndex: i,
+        icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+        });
+        }
+        else{
+        alert(status);
+        }
+        };
+        }
+        function addMarkers4(myTitle){
+        return function(results,status){
+        if(status == google.maps.GeocoderStatus.OK){
+        var marker = new google.maps.Marker({
+        map: map,
+        position: results[0].geometry.location,
+        title: myTitle,
+        zIndex: i,
+        icon: 'http://maps.google.com/mapfiles/ms/icons/orange-dot.png'
+        });
+        }
+        else{
+        alert(status);
+        }
+        };
+        }
+        function addMarkers5(myTitle){
+        return function(results,status){
+        if(status == google.maps.GeocoderStatus.OK){
+        var marker = new google.maps.Marker({
+        map: map,
+        position: results[0].geometry.location,
+        title: myTitle,
+        zIndex: i,
+        icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
+        });
+        }
+        else{
+        alert(status);
+        }
+        };
+        }
+        }
 
     script(async='', defer='', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDf66Jl1qUIpgwbjOfOJ1aQoW22z3LqJIA&signed_in=true&callback=initMap')
     button(onclick="move()") crimeData
     script.
         function move(){
+            if(document.getElementById('chk1').checked){
             window.location.href = '/newpage'
+            }
+            else if (document.getElementById('chk2').checked){
+            window.location.href = '/mu5'
+            }
+            else if (document.getElementById('chk3').checked){
+            window.location.href = '/mo5'
+            }
+            else if (document.getElementById('chk4').checked){
+            window.location.href = 'taU'
+            }
+            else if (document.getElementById('chk5').checked){
+            window.location.href = '/taO'
+            }
+            else{
+            window.location.href = '/dAll'
+            }
         }
-
