@@ -19,23 +19,23 @@ html
       }
   body
     #container
-     input(id = "chk1",type="checkbox", name="chk1", onclick='comm();')
+    input(id = "chk1",type="checkbox", name="chk1", onclick='comm();')
     = " Commercial Break and Enter"
-
+    br
     input(id = "chk2", type="checkbox", name="chk2", onclick='misUnder();')
     = " Mischief Under $5000"
-
+    br
     input(id = "chk3", type="checkbox", name="chk3", onclick='misOver();')
     = " Mischief Over $5000"
-
+    br
     input(id = "chk4", type="checkbox", name="chk4", onclick='taUnder();')
     = " Theft From Auto Under $5000"
-
+    br
     input(id = "chk5", type="checkbox", name="chk5", onclick='taOver();')
     = " Theft From Auto Over $5000"
-
+    br     
     input(id = "dAll", type='submit', value= 'Display All', onclick='initMap();')
-
+    br
     #map
     script.
       var latLng = {lat: 49.2827, lng: -123.1207};
@@ -384,7 +384,8 @@ html
         }
 
     script(async='', defer='', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDf66Jl1qUIpgwbjOfOJ1aQoW22z3LqJIA&signed_in=true&callback=initMap')
-    button(onclick="move()") crimeData
+    button(onclick="move()") crimeData                                 
+    button(onclick="logout()") Logout
     script.
         function move(){
             if(document.getElementById('chk1').checked){
@@ -405,6 +406,9 @@ html
             else{
             window.location.href = '/dAll'
             }
+        }
+        function logout(){
+        window.location = "user"
         }
 
     script.
