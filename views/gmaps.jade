@@ -11,31 +11,36 @@ html
       html, body {
       height: 70%;
       width: 70%;
-      margin: 10000;
-      padding: 10000000;
+      margin: 100;
+      padding: 10000;
       }
       #map {
-      height: 100%;
+      height: 100%; 
+      left: 350px; 
+      top: 50px;
+      border-style: solid;
+      border-width: 5px;
+      border-radius: 25px;
       }
-  body(style='background-image:url(http://guytoyz.com/wp-content/themes/rocketboard-v1-02/images/background/bg-b1.jpg); background-repeat: no-repeat; background-size: cover')
+  body(style='background-image:url(http://guytoyz.com/wp-content/themes/rocketboard-v1-02/images/background/bg-b1.jpg); background-repeat: no-repeat; background-size: 2000px 800px')
     #container
-     input(id = "chk1",type="checkbox", name="chk1", onclick='comm();')
+    input(id = "chk1",type="checkbox", name="chk1", onclick='comm();')
     = " Commercial Break and Enter"
-
+    br
     input(id = "chk2", type="checkbox", name="chk2", onclick='misUnder();')
     = " Mischief Under $5000"
-
+    br
     input(id = "chk3", type="checkbox", name="chk3", onclick='misOver();')
     = " Mischief Over $5000"
-
+    br
     input(id = "chk4", type="checkbox", name="chk4", onclick='taUnder();')
     = " Theft From Auto Under $5000"
-
+    br
     input(id = "chk5", type="checkbox", name="chk5", onclick='taOver();')
     = " Theft From Auto Over $5000"
-
-    input(id = "dAll", type='submit', value= 'Display All', onclick='initMap();')
-
+    br     
+    input(style="color:white; font-family: Calibri; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; background-color: gray; border-style: solid; border-color: black",id = "dAll", type='submit', value= 'Display All', onclick='initMap();')
+    br
     #map
     script.
       var latLng = {lat: 49.2827, lng: -123.1207};
@@ -384,7 +389,7 @@ html
         }
 
     script(async='', defer='', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDf66Jl1qUIpgwbjOfOJ1aQoW22z3LqJIA&signed_in=true&callback=initMap')
-    button(onclick="move()") Table View
+    button(style="position: absolute; left: 675px; top: 600px; color: white; font-family: Calibri; background-color: gray; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; border-color: black", onclick="move()") Table View                                
     script.
         function move(){
             if(document.getElementById('chk1').checked){
@@ -406,7 +411,7 @@ html
             window.location.href = '/dAll'
             }
         }
-    button(style="position: absolute; right: 10px; top: 0px;", onclick="move1()") logout
+    button(style="color: white; font-family: Calibri; background-color: gray; position: absolute; right: 10px; top: 0px; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; border-color: black", onclick="move1()") logout
     script.
         function move1(){
             window.location.href = '/user'
