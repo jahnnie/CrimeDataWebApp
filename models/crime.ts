@@ -18,12 +18,8 @@ export interface ICrime extends M.Document {
   address: string;
 }
 
-<<<<<<< HEAD
-export var crimeModel = M.model<ICrime>("crime", crimeSchema);
-=======
 export var crimeModel = M.model<ICrime>("crime", crimeSchema);
 
 export function removeAll() {
   return crimeModel.remove({}).exec();
 }
->>>>>>> 33951212615fdbe46bd57091380d742ac09170b5

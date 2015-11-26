@@ -1,0 +1,22 @@
+html
+  body
+    input#check_all_1(type="user", placeholder="Username", name="user")
+    input#check_all_1(type="pass", placeholder="Password", name="pass")
+    button#btnSubmit(type="submit", onclick='checkLogin()') Login
+    button#btnSubmit(onclick='register()') Register Page
+
+
+    script(type='text/javascript').
+     var usernameArray = JSON.parse('!{usernames}');
+     function checkLogin(){
+          for(var i=0;i<usernameArray.length;i++){
+            if (usernameArray[i].username == document.querySelector('[name="user"]').value){
+              document.write("correct");
+              window.location = "http://localhost:3000/gmaps";
+              }
+          }
+          document.write("invalid login information");
+            }
+      function register(){
+             window.location = "http://localhost:3000/user/newuser";
+            }
