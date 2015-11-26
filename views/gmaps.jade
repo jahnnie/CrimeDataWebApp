@@ -6,7 +6,7 @@ html
       !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
     meta(name='viewport', content='initial-scale=1.0, user-scalable=no')
     meta(charset='utf-8')
-    title Simple markers
+    title Crimes in Vancouver
     style.
       html, body {
       height: 70%;
@@ -17,7 +17,7 @@ html
       #map {
       height: 100%;
       }
-  body
+  body(style='background-image:url(http://guytoyz.com/wp-content/themes/rocketboard-v1-02/images/background/bg-b1.jpg); background-repeat: no-repeat; background-size: cover')
     #container
      input(id = "chk1",type="checkbox", name="chk1", onclick='comm();')
     = " Commercial Break and Enter"
@@ -384,7 +384,7 @@ html
         }
 
     script(async='', defer='', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDf66Jl1qUIpgwbjOfOJ1aQoW22z3LqJIA&signed_in=true&callback=initMap')
-    button(onclick="move()") crimeData
+    button(onclick="move()") Table View
     script.
         function move(){
             if(document.getElementById('chk1').checked){
@@ -405,6 +405,11 @@ html
             else{
             window.location.href = '/dAll'
             }
+        }
+    button(style="position: absolute; right: 10px; top: 0px;", onclick="move1()") logout
+    script.
+        function move1(){
+            window.location.href = '/user'
         }
 
     script.
