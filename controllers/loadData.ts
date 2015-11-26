@@ -4,13 +4,16 @@ var fs = require('fs');
 var parse = require('csv-parse');
 var Promise = require('promise');
 
-var CrimeModel = require('./../models/crime').crimeModel
+var Crime = require('./../models/crime');
+var CrimeModel = Crime.crimeModel;
 
 export function loadData(callback) {
 
   var file = fs.readFileSync('assets/crime_2015.csv', 'utf8');
-
-  parsePromise(file, { columns: true })
+  Crime.removeAll()
+  .then(function () {
+    return parsePromise(file, { columns: true })
+  })
   .then(function (results) {
     return formatResults(results);
   })
@@ -21,6 +24,7 @@ export function loadData(callback) {
     callback(inserted.length);
   });
 }
+
 
 // Promise wrapper for parsing CSV
 var parsePromise = function (file, options) {
