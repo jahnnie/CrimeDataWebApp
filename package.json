@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "tsc && node ./bin/www"
+    "start": "tsc && node ./bin/www",
+    "test": "tsc && mocha -t 10000"
   },
   "main": "app.js",
   "dependencies": {
@@ -20,5 +21,9 @@
     "serve-favicon": "~2.2.1",
     "tsc": "^1.20150623.0",
     "tsd": "^0.6.5"
+  },
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "chai-as-promised": "^5.1.0"
   }
 }
