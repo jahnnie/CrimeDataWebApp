@@ -1,11 +1,12 @@
 extends layout
 
 block content
-  h1= title
+  h1(style="position: absolute;color: white;font-family:Calibri;") Sign up
+  body(style='background-image:url(http://guytoyz.com/wp-content/themes/rocketboard-v1-02/images/background/bg-b1.jpg); background-repeat: no-repeat; background-size: cover')
   form#formAddUser(name="adduser",method="post",action="/user/signedUpPage")
-    input#inputUserName(type="text", placeholder="username", name="username")
-    input#inputPassword(type="password", placeholder="password", name="password")
-    input#inputFirstName(type="text", placeholder="first name", name="firstName")
-    input#inputLastName(type="text", placeholder="last name", name="lastName")
-    input#inputEmail(type="text", placeholder="useremail", name="email")
-    button#btnSubmit(type="submit") submit
+    input#inputUserName(style="position: absolute; top: 150px;",type="text", placeholder="username", name="username")
+    input#inputPassword(style="position: absolute; top: 180px;",type="password", placeholder="password", name="password")
+    input#inputFirstName(style="position: absolute; top: 210px;",type="text", placeholder="first name", name="firstName")
+    input#inputLastName(style="position: absolute; top: 240px;",type="text", placeholder="last name", name="lastName")
+    input#inputEmail(style="position: absolute; top: 270px;",type="text", placeholder="email", name="email")
+    button#btnSubmit(style="position: absolute; top: 300px;",type="submit") submit
