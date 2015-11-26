@@ -1,0 +1,10 @@
+h1 Table View
+script.
+	var crimes = JSON.parse('!{mo5}');
+	for(var i=0;i<10;i++){
+	document.write("TYPE: ".bold().fontcolor("blue") + JSON.stringify(crimes[i].type).fontcolor("blue") + "<br>");
+	document.write("YEAR: ".bold().fontcolor("blue") + JSON.stringify(crimes[i].year).fontcolor("blue") + "<br>");
+	document.write("MONTH: ".bold().fontcolor("blue") + JSON.stringify(crimes[i].month).fontcolor("blue") + "<br>");
+	document.write("ADDRESS: ".bold().fontcolor("blue") + JSON.stringify(crimes[i].address).fontcolor("blue") + "<br>");
+	document.write("<br>");
+	}

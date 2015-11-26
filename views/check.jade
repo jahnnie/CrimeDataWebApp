@@ -1,0 +1,81 @@
+html
+  body
+    input#check_all_1(type="checkbox", name="chk1", onclick='comm();')
+    = " Commercial Break and Enter"
+
+    input#check_all_2(type="checkbox", name="chk2", onclick='misUnder();')
+    = " Mischief Under $5000"
+
+    input#check_all_3(type="checkbox", name="chk3", onclick='misOver();')
+    = " Mischief Over $5000"
+
+    input#check_all_4(type="checkbox", name="chk4", onclick='taUnder();')
+    = " Theft From Auto Under $5000"
+
+    input#check_all_5(type="checkbox", name="chk5", onclick='taOver();')
+    = " Theft From Auto Over $5000"
+
+    input#displayAll(type='submit', value= 'Display All', onclick='errthang();')
+
+    script.
+     var commArray = JSON.parse('!{comms}');
+     var mu5Array = JSON.parse('!{mu5s}');
+     var mo5Array = JSON.parse('!{mo5s}');
+     var taU5Array = JSON.parse('!{tau5s}');
+     var taO5Array = JSON.parse('!{tao5s}');
+     var allArray = JSON.parse('!{errthang}');
+
+
+      function misUnder(){
+      for(var i=0;i<10;i++){
+      document.write("TYPE: ".bold() + JSON.stringify(mu5Array[i].type) + "<br>");
+      document.write("YEAR: ".bold() + JSON.stringify(mu5Array[i].year) + "<br>");
+      document.write("MONTH: ".bold() + JSON.stringify(mu5Array[i].month) + "<br>");
+      document.write("ADDRESS: ".bold() + JSON.stringify(mu5Array[i].address) + "<br>");
+      document.write("<br>");}
+      }
+
+      function misOver(){
+      for(var i=0;i<10;i++){
+      document.write("TYPE: ".bold() + JSON.stringify(mo5Array[i].type) + "<br>");
+      document.write("YEAR: ".bold() + JSON.stringify(mo5Array[i].year) + "<br>");
+      document.write("MONTH: ".bold() + JSON.stringify(mo5Array[i].month) + "<br>");
+      document.write("ADDRESS: ".bold() + JSON.stringify(mo5Array[i].address) + "<br>");
+      document.write("<br>");}
+      }
+
+      function taUnder(){
+      for(var i=0;i<10;i++){
+      document.write("TYPE: ".bold() + JSON.stringify(taU5Array[i].type) + "<br>");
+      document.write("YEAR: ".bold() + JSON.stringify(taU5Array[i].year) + "<br>");
+      document.write("MONTH: ".bold() + JSON.stringify(taU5Array[i].month) + "<br>");
+      document.write("ADDRESS: ".bold() + JSON.stringify(taU5Array[i].address) + "<br>");
+      document.write("<br>");}
+      }
+
+      function taOver(){
+      for(var i=0;i<10;i++){
+      document.write("TYPE: ".bold() + JSON.stringify(taO5Array[i].type) + "<br>");
+      document.write("YEAR: ".bold() + JSON.stringify(taO5Array[i].year) + "<br>");
+      document.write("MONTH: ".bold() + JSON.stringify(taO5Array[i].month) + "<br>");
+      document.write("ADDRESS: ".bold() + JSON.stringify(taO5Array[i].address) + "<br>");
+      document.write("<br>");}
+      }
+
+      function comm(){
+      for(var i=0;i<10;i++){
+      document.write("TYPE: ".bold() + JSON.stringify(commArray[i].type) + "<br>");
+      document.write("YEAR: ".bold() + JSON.stringify(commArray[i].year) + "<br>");
+      document.write("MONTH: ".bold() + JSON.stringify(commArray[i].month) + "<br>");
+      document.write("ADDRESS: ".bold() + JSON.stringify(commArray[i].address) + "<br>");
+      document.write("<br>");}
+      }
+
+      function errthang(){
+      for(var i=0;i<10;i++){
+      document.write("TYPE: ".bold() + JSON.stringify(allArray[i].type) + "<br>");
+      document.write("YEAR: ".bold() + JSON.stringify(allArray[i].year) + "<br>");
+      document.write("MONTH: ".bold() + JSON.stringify(allArray[i].month) + "<br>");
+      document.write("ADDRESS: ".bold() + JSON.stringify(allArray[i].address) + "<br>");
+      document.write("<br>");}
+      }
