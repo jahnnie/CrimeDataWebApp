@@ -8,7 +8,7 @@ class Router {
     var express = require('express');
     var router = express.Router();
 
-    var CrimeModel = require('./../models/crime').crimeModel 
+    var CrimeModel = require('./../models/crime').crimeModel
 
     /* GET Gmaps. */
     /*
@@ -151,8 +151,8 @@ class Router {
     /* GET New Crime Page. */
     router.get('/addnewcrimepage', function(req, res) {
       res.render('addnewcrimepage', { title: 'New Crime' });
-    });  
-    
+    });
+
     /* POST to Add New Crime. */
     router.post('/addcrime', function(req, res) {
         var newCrime = {
@@ -243,7 +243,7 @@ class Router {
             for (var i = 227; i < 233; i++) {
                 mo5[i-227] = docs[i];
             }
-            
+
             for (var i = 1689; i < 1693; i++) {
                 mo5[i - 1683] = docs[i];
             }
@@ -284,7 +284,7 @@ class Router {
         res.render('check', { title: 'Filter Settings' });
     });
 
-    
+
     module.exports = router;
   }
 }

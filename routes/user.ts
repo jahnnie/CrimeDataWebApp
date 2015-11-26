@@ -12,7 +12,7 @@ class UserRouter {
     this.router = express.Router();
 
     /* GET Sign Up Page. */
-    this.router.get('/newuser', function(req, res) {
+    this.router.get('/user/newuser', function(req, res) {
       res.render('newuser', { title: 'Sign Up' });
     });
 
