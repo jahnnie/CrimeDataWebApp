@@ -2,18 +2,23 @@ html
   body
     input#check_all_1(type="checkbox", name="chk1", onclick='comm();')
     = " Commercial Break and Enter"
+    br
 
     input#check_all_2(type="checkbox", name="chk2", onclick='misUnder();')
     = " Mischief Under $5000"
+    br
 
     input#check_all_3(type="checkbox", name="chk3", onclick='misOver();')
     = " Mischief Over $5000"
+    br
 
     input#check_all_4(type="checkbox", name="chk4", onclick='taUnder();')
     = " Theft From Auto Under $5000"
+    br
 
     input#check_all_5(type="checkbox", name="chk5", onclick='taOver();')
     = " Theft From Auto Over $5000"
+    br
 
     input#displayAll(type='submit', value= 'Display All', onclick='errthang();')
 

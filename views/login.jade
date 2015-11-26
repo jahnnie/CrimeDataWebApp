@@ -1,22 +1,30 @@
-html
-  body
-    input#check_all_1(type="user", placeholder="Username", name="user")
-    input#check_all_1(type="pass", placeholder="Password", name="pass")
-    button#btnSubmit(type="submit", onclick='checkLogin()') Login
-    button#btnSubmit(onclick='register()') Register Page
+extends layout
+
+block content
+    h1= title
+
+    html
+      body
+        input#check_all_1(type="user", placeholder="Username", name="user")
+        input#check_all_1(type="password", placeholder="Password", name="pass")
+        button#btnSubmit(type="submit", onclick='checkLogin()') Login
+        br
+        br
+        button#btnSubmit(onclick='register()') Register Page
 
 
-    script(type='text/javascript').
-     var usernameArray = JSON.parse('!{usernames}');
-     function checkLogin(){
-          for(var i=0;i<usernameArray.length;i++){
-            if (usernameArray[i].username == document.querySelector('[name="user"]').value){
-              document.write("correct");
-              window.location = "http://localhost:3000/gmaps";
+        script(type='text/javascript').
+         var userArray = JSON.parse('!{users}');
+         function checkLogin(){
+              for(var i=0;i<userArray.length;i++){
+                if (userArray[i].username == document.querySelector('[name="user"]').value &&
+                	userArray[i].password == document.querySelector('[name="pass"]').value){
+                  document.write("success");
+                  window.location = "gmaps";
+                  }
               }
-          }
-          document.write("invalid login information");
-            }
-      function register(){
-             window.location = "http://localhost:3000/user/newuser";
-            }
+              document.write("invalid login information");
+                }
+          function register(){
+                 window.location = "user/newuser";
+                }
