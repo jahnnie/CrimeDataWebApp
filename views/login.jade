@@ -11,8 +11,8 @@ block content
         br
         br
         button#btnSubmit(onclick='register()') Register Page
-    
-    
+
+
         script(type='text/javascript').
          var userArray = JSON.parse('!{users}');
          function checkLogin(){
@@ -20,13 +20,11 @@ block content
                 if (userArray[i].username == document.querySelector('[name="user"]').value &&
                 	userArray[i].password == document.querySelector('[name="pass"]').value){
                   document.write("success");
-                  window.location = "http://localhost:3000/gmaps";
+                  window.location = "gmaps";
                   }
               }
               document.write("invalid login information");
                 }
           function register(){
-                 window.location = "http://localhost:3000/user/newuser";
+                 window.location = "user/newuser";
                 }
-
-          
